@@ -270,13 +270,13 @@
       { Value:2,  Suffix:"",  Label:"فرعين مغطّيان بالكامل" }
     ],
     projects: [
-      { Icon:"QR", Title:"نظام البلاغات الإلكتروني الذكي", Description:"بلاغات فورية عبر رموز QR مرتبطة بقاعدة بيانات مشتركة لمتابعة الأحداث العارضة.", Tags:"Google Sheets,QR Codes,GAS", Link:"#" },
+      { Icon:"QR", Title:"نظام البلاغات الإلكتروني الذكي", Description:"بلاغات فورية عبر رموز QR مرتبطة بقاعدة بيانات مشتركة لمتابعة الأحداث العارضة.", Tags:"Google Sheets,QR Codes,GAS", Link:"#", ResultsLink:"#" },
       { Icon:"Tr", Title:"منصة تدريب الممرضات", Description:"تطبيق SPA لتدريب ممرضات الأسنان بنظام إتقان وتدريب تسلسلي يومي.", Tags:"React 18,GAS,Cloudinary", Link:"#" },
       { Icon:"CB", Title:"لوحة تحكم اعتماد سباهي", Description:"تتبع 8 محاور اعتماد و107 سياسة عبر شبكة توقيعات إلكترونية.", Tags:"HTML,GAS,Google Sheets", Link:"#" }
     ],
     initiatives: [
       { Number:"01", Title:"اعتماد مركز التميز مع Invisalign", Description:"قيادة ملف تصنيف العيادة كمركز تميز عالمي." },
-      { Number:"02", Title:"اتفاقية الطوارئ مع مجموعة د. سليمان الحبيب", Description:"توقيع اتفاقية الطوارئ الطبية الملزمة للاعتماد." }
+      { Number:"02", Title:"اتفاقية نقل الحالات الطارئة مع مجمع الحبيب الطبي", Description:"صياغة وتوقيع اتفاقية نقل الحالات الطارئة الملزمة للاعتماد." }
     ],
     timeline: [
       { Period:"FEB 2026", Title:"انطلاق مشروع الجاهزية لاعتماد سباهي", Description:"الإشراف الكامل على المشروع وتوجيه الأقسام الحيوية." },
@@ -373,11 +373,16 @@
           <div class="flex flex-wrap gap-2 mt-4">
             ${tags.map(t => `<span class="text-[11px] font-mono-num bg-slate-100 text-ink-500 px-2.5 py-1 rounded-md">${escapeHtml(t)}</span>`).join('')}
           </div>
-          ${(p.Link && p.Link.trim() && p.Link.trim() !== '#')
-            ? (p.Link.includes('drive.google.com')
-                ? `<a href="${escapeAttr(p.Link)}" target="_blank" rel="noopener" download class="mt-6 inline-flex items-center justify-center gap-2 text-sm font-medium text-navy-900 border border-slate-200 rounded-lg py-2.5 hover:bg-navy-950 hover:text-white hover:border-navy-950 transition-colors">تحميل الأداة (Offline)</a>`
-                : `<a href="${escapeAttr(p.Link)}" target="_blank" rel="noopener" class="mt-6 inline-flex items-center justify-center gap-2 text-sm font-medium text-navy-900 border border-slate-200 rounded-lg py-2.5 hover:bg-navy-950 hover:text-white hover:border-navy-950 transition-colors">معاينة النظام</a>`)
-            : `<span class="mt-6 inline-flex items-center justify-center gap-2 text-sm font-medium text-slate-400 border border-dashed border-slate-200 rounded-lg py-2.5 cursor-default select-none">أداة تعمل محلياً (Offline)</span>`}
+          <div class="mt-6 flex flex-col gap-2">
+            ${(p.Link && p.Link.trim() && p.Link.trim() !== '#')
+              ? (p.Link.includes('drive.google.com')
+                  ? `<a href="${escapeAttr(p.Link)}" target="_blank" rel="noopener" download class="inline-flex items-center justify-center gap-2 text-sm font-medium text-navy-900 border border-slate-200 rounded-lg py-2.5 hover:bg-navy-950 hover:text-white hover:border-navy-950 transition-colors">تحميل الأداة (Offline)</a>`
+                  : `<a href="${escapeAttr(p.Link)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 text-sm font-medium text-navy-900 border border-slate-200 rounded-lg py-2.5 hover:bg-navy-950 hover:text-white hover:border-navy-950 transition-colors">معاينة النظام</a>`)
+              : `<span class="inline-flex items-center justify-center gap-2 text-sm font-medium text-slate-400 border border-dashed border-slate-200 rounded-lg py-2.5 cursor-default select-none">أداة تعمل محلياً (Offline)</span>`}
+            ${(p.ResultsLink && p.ResultsLink.trim() && p.ResultsLink.trim() !== '#')
+              ? `<a href="${escapeAttr(p.ResultsLink)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 text-sm font-medium text-teal-700 border border-teal-200 bg-teal-50 rounded-lg py-2.5 hover:bg-teal-100 transition-colors">عرض النتائج (Google Sheet) ↗</a>`
+              : ``}
+          </div>
         </div>
       </article>`;
     }).join('');
