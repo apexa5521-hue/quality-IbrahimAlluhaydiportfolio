@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدير الجودة والتحول الرقمي | البورتفوليو التنفيذي</title>
+<meta name="description" content="بورتفوليو تنفيذي يوثّق مسار الجاهزية لاعتماد سباهي، أنظمة التحول الرقمي، والاتفاقيات الاستراتيجية">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: { 950:'#060F24', 900:'#0A1F44', 800:'#12305C', 700:'#1B3E73', 600:'#274E8A' },
+          teal: { 400:'#3FD4C4', 500:'#1FB6A6', 600:'#149385' },
+          gold: { 400:'#DAB86A', 500:'#C9A24B' },
+          ink:  { 900:'#0F172A', 500:'#64748B' }
+        },
+        fontFamily: {
+          display: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+          body: ['Tajawal', 'sans-serif'],
+          mono: ['"IBM Plex Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root { scroll-behavior: smooth; }
+  body { font-family: 'Tajawal', sans-serif; background: #F4F6F9; color: #0F172A; }
+  h1, h2, h3, h4, .font-display { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+  .font-mono-num { font-family: 'IBM Plex Mono', monospace; direction: ltr; unicode-bidi: isolate; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  .pulse-line-path { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: draw-pulse 7s linear infinite; }
+  @keyframes draw-pulse {
+    0%   { stroke-dashoffset: 1400; opacity: 0; }
+    5%   { opacity: 1; }
+    55%  { stroke-dashoffset: 0; opacity: 1; }
+    65%  { opacity: 0; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+  }
+
+  .glow-dot { box-shadow: 0 0 0 0 rgba(63, 212, 196, 0.55); animation: glow-pulse 2.4s ease-out infinite; }
+  @keyframes glow-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(63, 212, 196, 0.55); }
+    70%  { box-shadow: 0 0 0 12px rgba(63, 212, 196, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(63, 212, 196, 0); }
+  }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.7,.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  .system-card { transition: transform 0.35s cubic-bezier(.2,.7,.3,1), box-shadow 0.35s ease, border-color 0.35s ease; }
+  .system-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -12px rgba(10, 31, 68, 0.25); border-color: rgba(31, 182, 166, 0.55); }
+  .system-card .card-accent { background: linear-gradient(90deg, #1FB6A6, #274E8A); height: 3px; transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease; }
+  .system-card:hover .card-accent { transform: scaleX(1); }
+
+  .timeline-track { background: linear-gradient(180deg, #1FB6A6 0%, #1B3E73 60%, rgba(27,62,115,0.15) 100%); }
+  .timeline-node { box-shadow: 0 0 0 4px #F4F6F9, 0 0 0 6px rgba(31,182,166,0.35); }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #1B3E73; border-radius: 8px; }
+
+  a:focus-visible, button:focus-visible { outline: 2px solid #3FD4C4; outline-offset: 3px; border-radius: 4px; }
+
+  .kpi-divider::after { content: ''; position: absolute; inset-inline-end: 0; top: 10%; height: 80%; width: 1px; background: rgba(255,255,255,0.12); }
+
+  .skeleton { background: linear-gradient(90deg, #E2E8F0 25%, #EDF1F5 37%, #E2E8F0 63%); background-size: 400% 100%; animation: skeleton-loading 1.4s ease infinite; }
+  @keyframes skeleton-loading { 0% { background-position: 100% 50%; } 100% { background-position: 0 50%; } }
+</style>
+</head>
+
+<body class="bg-slate-50 text-ink-900 antialiased">
+
+<!-- =====================================================================
+     ملاحظة إعداد: الصق رابط الـ Web App الخاص بـ Code.gs هنا بعد النشر
+     ===================================================================== -->
+<script>
+  const GAS_WEB_APP_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+</script>
+
+<!-- =====================================================================
+     شريط التنقل العلوي (Sticky Nav)
+     ===================================================================== -->
+<header id="top-nav" class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-navy-950/80 border-b border-white/10 transition-all">
+  <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="#hero" class="font-display font-bold text-white text-sm sm:text-base tracking-wide flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-teal-400 glow-dot"></span>
+      إدارة الجودة والتحول الرقمي
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-slate-300 font-medium">
+      <a href="#about" class="hover:text-teal-400 transition-colors">نبذة عني</a>
+      <a href="#kpis" class="hover:text-teal-400 transition-colors">المؤشرات</a>
+      <a href="#systems" class="hover:text-teal-400 transition-colors">الأنظمة</a>
+      <a href="#initiatives" class="hover:text-teal-400 transition-colors">المبادرات</a>
+      <a href="#timeline" class="hover:text-teal-400 transition-colors">سجل الإنجاز</a>
+    </div>
+    <a href="#systems" class="hidden sm:inline-flex items-center gap-2 rounded-full border border-teal-400/40 text-teal-300 text-xs font-medium px-4 py-2 hover:bg-teal-400/10 transition-colors">
+      استعراض الأنظمة
+    </a>
+  </nav>
+</header>
+
+<!-- =====================================================================
+     SECTION 1 — HERO
+     ===================================================================== -->
+<section id="hero" class="relative overflow-hidden bg-navy-950 text-white pt-40 pb-28 sm:pt-48 sm:pb-36">
+  <svg class="absolute inset-0 w-full h-full opacity-40 pointer-events-none" viewBox="0 0 1200 500" preserveAspectRatio="none" aria-hidden="true">
+    <path class="pulse-line-path" d="M0,260 L180,260 L215,260 L235,120 L265,400 L295,260 L340,260 L365,220 L385,260 L520,260 L555,260 L580,150 L610,340 L640,260 L1200,260"
+          fill="none" stroke="#1FB6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="absolute -top-40 -left-40 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-32 -right-20 w-96 h-96 bg-navy-600/30 rounded-full blur-3xl"></div>
+
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="flex items-center gap-3 mb-6 reveal is-visible">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 text-xs font-medium text-teal-300 font-mono-num tracking-wide">
+        <span class="w-1.5 h-1.5 rounded-full bg-teal-400 glow-dot"></span>
+        QUALITY × DIGITAL TRANSFORMATION
+      </span>
+    </div>
+
+    <h1 id="hero-title" class="font-display font-bold leading-[1.15] text-4xl sm:text-6xl max-w-3xl reveal is-visible" style="transition-delay:.05s">
+      مدير الجودة
+      <span class="block text-teal-400">وقائد التحول الرقمي</span>
+    </h1>
+
+    <p id="hero-summary" class="mt-6 max-w-2xl text-slate-300 text-base sm:text-lg leading-relaxed reveal is-visible" style="transition-delay:.15s">
+      دمج معايير الجودة السريرية مع أدوات التحول الرقمي لرفع الكفاءة التشغيلية، وقيادة مسار الجاهزية لاعتماد
+      <span class="text-white font-semibold">سباهي (CBAHI)</span> عبر أنظمة مبنية داخلياً وأتمتة كاملة لعمليات المتابعة والتوثيق.
+    </p>
+
+    <div class="mt-10 flex flex-wrap items-center gap-4 reveal is-visible" style="transition-delay:.25s">
+      <a href="#systems" class="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-400 text-navy-950 font-display font-semibold text-sm px-6 py-3.5 rounded-xl transition-colors">
+        استعراض الأنظمة المطوّرة <span aria-hidden="true">←</span>
+      </a>
+      <a href="#about" class="inline-flex items-center gap-2 border border-white/20 hover:border-teal-400/60 text-white text-sm font-medium px-6 py-3.5 rounded-xl transition-colors">
+        نبذة عني
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     SECTION 2 — ABOUT ME (نبذة عني)
+     يُعبَّأ تلقائياً من تبويب Bio في الشيت (AboutText + Highlights)
+     ===================================================================== -->
+<section id="about" class="py-24 sm:py-32 bg-white border-b border-slate-100">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid md:grid-cols-5 gap-12 items-start">
+    <div class="md:col-span-2 reveal">
+      <span class="text-teal-600 font-mono-num text-xs font-semibold tracking-widest">ABOUT</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl mt-3 text-navy-950">نبذة عني</h2>
+      <p class="mt-4 text-ink-500 leading-relaxed">
+        خلفية سريعة عن المسار المهني ومجالات التركيز.
+      </p>
+    </div>
+    <div class="md:col-span-3 reveal" style="transition-delay:.1s">
+      <p id="about-text" class="text-ink-900 leading-loose text-base sm:text-lg skeleton rounded-lg min-h-[6rem]"></p>
+      <div id="about-highlights" class="flex flex-wrap gap-2 mt-6"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     SECTION 3 — KPIs
+     ===================================================================== -->
+<section id="kpis" class="relative bg-navy-900 text-white py-16 border-y border-white/5">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div id="kpis-grid" class="grid grid-cols-2 md:grid-cols-4 gap-y-10">
+      <!-- تُبنى ديناميكياً من JS بناءً على تبويب KPIs -->
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     SECTION 4 — SYSTEMS GALLERY
+     ===================================================================== -->
+<section id="systems" class="py-24 sm:py-32 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl reveal">
+      <span class="text-teal-600 font-mono-num text-xs font-semibold tracking-widest">SYSTEMS GALLERY</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl mt-3 text-navy-950">معرض الأنظمة والحلول التقنية</h2>
+      <p class="mt-4 text-ink-500 leading-relaxed">
+        مجموعة الأنظمة المبنية داخلياً باستخدام Google Apps Script وGoogle Sheets وReact وHTML/JS، لأتمتة عمليات الجودة، التدريب، والتواصل التشغيلي.
+      </p>
+    </div>
+    <div id="systems-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
+      <!-- تُبنى ديناميكياً من JS بناءً على تبويب Projects -->
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     SECTION 5 — STRATEGIC INITIATIVES
+     ===================================================================== -->
+<section id="initiatives" class="relative bg-navy-950 text-white py-24 sm:py-32 overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.06] pointer-events-none" style="background-image: radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0); background-size: 28px 28px;"></div>
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl reveal">
+      <span class="text-teal-400 font-mono-num text-xs font-semibold tracking-widest">STRATEGIC INITIATIVES</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl mt-3">المبادرات والاعتمادات الاستراتيجية</h2>
+      <p class="mt-4 text-slate-400 leading-relaxed">
+        قيادة ملفات التميز الخارجية والاتفاقيات المؤسسية التي ترفع من تصنيف العيادة وجاهزيتها التشغيلية.
+      </p>
+    </div>
+    <div id="initiatives-grid" class="grid sm:grid-cols-2 gap-5 mt-14">
+      <!-- تُبنى ديناميكياً من JS بناءً على تبويب Initiatives -->
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     SECTION 6 — TIMELINE / CHANGELOG
+     ===================================================================== -->
+<section id="timeline" class="py-24 sm:py-32 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8">
+    <div class="reveal">
+      <span class="text-teal-600 font-mono-num text-xs font-semibold tracking-widest">CHANGELOG</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl mt-3 text-navy-950">سجل التحديثات والإنجاز</h2>
+      <p class="mt-4 text-ink-500 leading-relaxed max-w-2xl">
+        خط زمني حي لأبرز محطات مشروع الجاهزية للاعتماد والتحول الرقمي.
+      </p>
+    </div>
+    <div class="relative mt-16">
+      <div class="timeline-track absolute top-0 bottom-0 right-[7px] w-[2px]"></div>
+      <div id="timeline-list" class="space-y-10">
+        <!-- تُبنى ديناميكياً من JS بناءً على تبويب Timeline -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     FOOTER
+     ===================================================================== -->
+<footer class="bg-navy-950 text-slate-400 py-10 border-t border-white/5">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+    <p class="font-display text-white/80">مدير الجودة والتحول الرقمي — Apex Care Clinics</p>
+    <p class="font-mono-num text-xs text-slate-500">Updated · JUL 2026</p>
+  </div>
+</footer>
+
+<!-- =====================================================================
+     JavaScript
+     ===================================================================== -->
+<script>
+  // ---------------------------------------------------------------------
+  // بيانات افتراضية تظهر فوراً قبل/بدل الاتصال بالشيت (لا تترك الصفحة فارغة)
+  // عدّلها هنا فقط إذا أردت تجربة الصفحة بدون ربط GAS_WEB_APP_URL
+  // ---------------------------------------------------------------------
+  const FALLBACK_DATA = {
+    bio: {
+      AboutText: "مدير جودة وقائد تحول رقمي، أعمل على دمج معايير الاعتماد الصحي مع أدوات رقمية أبنيها داخلياً لرفع كفاءة العمليات في فرعي بريدة وعنيزة.",
+      Highlights: "الجودة والاعتماد,التحول الرقمي,Google Apps Script,الحوكمة السريرية"
+    },
+    kpis: [
+      { Value:10, Suffix:"+", Label:"أنظمة رقمية مطوّرة داخلياً" },
+      { Value:8,  Suffix:"",  Label:"محاور اعتماد سباهي قيد التتبع" },
+      { Value:107,Suffix:"",  Label:"سياسة موثّقة ومتابَعة إلكترونياً" },
+      { Value:2,  Suffix:"",  Label:"فرعين مغطّيان بالكامل" }
+    ],
+    projects: [
+      { Icon:"QR", Title:"نظام البلاغات الإلكتروني الذكي", Description:"بلاغات فورية عبر رموز QR مرتبطة بقاعدة بيانات مشتركة لمتابعة الأحداث العارضة.", Tags:"Google Sheets,QR Codes,GAS", Link:"#" },
+      { Icon:"Tr", Title:"منصة تدريب الممرضات", Description:"تطبيق SPA لتدريب ممرضات الأسنان بنظام إتقان وتدريب تسلسلي يومي.", Tags:"React 18,GAS,Cloudinary", Link:"#" },
+      { Icon:"CB", Title:"لوحة تحكم اعتماد سباهي", Description:"تتبع 8 محاور اعتماد و107 سياسة عبر شبكة توقيعات إلكترونية.", Tags:"HTML,GAS,Google Sheets", Link:"#" }
+    ],
+    initiatives: [
+      { Number:"01", Title:"اعتماد مركز التميز مع Invisalign", Description:"قيادة ملف تصنيف العيادة كمركز تميز عالمي." },
+      { Number:"02", Title:"اتفاقية الطوارئ مع مجموعة د. سليمان الحبيب", Description:"توقيع اتفاقية الطوارئ الطبية الملزمة للاعتماد." }
+    ],
+    timeline: [
+      { Period:"FEB 2026", Title:"انطلاق مشروع الجاهزية لاعتماد سباهي", Description:"الإشراف الكامل على المشروع وتوجيه الأقسام الحيوية." },
+      { Period:"JUL 2026", Title:"توصية استراتيجية للامتثال الميداني", Description:"التركيز القادم على دعم الإدارة العليا لتعزيز الالتزام الفعلي." }
+    ]
+  };
+
+  // ---------------------------------------------------------------------
+  // شريط التنقل + تأثير الظهور عند التمرير + العدادات
+  // ---------------------------------------------------------------------
+  const nav = document.getElementById('top-nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('shadow-lg', window.scrollY > 20));
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  function observeReveal(root = document) {
+    root.querySelectorAll('.reveal:not(.is-visible)').forEach(el => revealObserver.observe(el));
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { animateCounter(entry.target); counterObserver.unobserve(entry.target); }
+    });
+  }, { threshold: 0.5 });
+
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10) || 0;
+    const duration = 1400, start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      el.textContent = Math.floor((1 - Math.pow(1 - progress, 3)) * target);
+      if (progress < 1) requestAnimationFrame(step); else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+
+  function observeCounters(root = document) {
+    root.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+  }
+
+  // ---------------------------------------------------------------------
+  // دوال البناء الديناميكي لكل قسم
+  // ---------------------------------------------------------------------
+  function renderAbout(bio) {
+    const textEl = document.getElementById('about-text');
+    textEl.textContent = bio.AboutText || FALLBACK_DATA.bio.AboutText;
+    textEl.classList.remove('skeleton');
+
+    const wrap = document.getElementById('about-highlights');
+    const highlights = (bio.Highlights || FALLBACK_DATA.bio.Highlights).split(',').map(s => s.trim()).filter(Boolean);
+    wrap.innerHTML = highlights.map(h =>
+      `<span class="text-xs font-medium bg-teal-50 text-teal-700 border border-teal-100 px-3 py-1.5 rounded-full">${escapeHtml(h)}</span>`
+    ).join('');
+
+    if (bio.Title) {
+      const titleEl = document.querySelector('#hero-title');
+      // العنوان الرئيسي يبقى ثابتاً بصرياً؛ فقط نحدّث الملخص إن توفر
+    }
+    if (bio.HeroSummary) {
+      document.getElementById('hero-summary').textContent = bio.HeroSummary;
+    }
+  }
+
+  function renderKPIs(kpis) {
+    const grid = document.getElementById('kpis-grid');
+    grid.innerHTML = kpis.map((k, i) => `
+      <div class="kpi-item relative ${i < kpis.length - 1 ? 'kpi-divider' : ''} reveal px-4 text-center md:text-start" style="transition-delay:${i * 0.08}s">
+        <div class="font-mono-num text-4xl sm:text-5xl font-semibold text-teal-400">
+          <span class="counter" data-target="${parseInt(k.Value, 10) || 0}">0</span><span>${escapeHtml(k.Suffix || '')}</span>
+        </div>
+        <p class="mt-2 text-slate-400 text-xs sm:text-sm font-medium">${escapeHtml(k.Label || '')}</p>
+      </div>
+    `).join('');
+    observeReveal(grid); observeCounters(grid);
+  }
+
+  function renderProjects(projects) {
+    const grid = document.getElementById('systems-grid');
+    grid.innerHTML = projects.map((p, i) => {
+      const tags = (p.Tags || '').split(',').map(s => s.trim()).filter(Boolean);
+      return `
+      <article class="system-card reveal group relative bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col" style="transition-delay:${(i % 3) * 0.05}s">
+        <div class="card-accent"></div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-11 h-11 rounded-xl bg-navy-900 flex items-center justify-center text-teal-400 font-display font-bold text-sm">${escapeHtml(p.Icon || '•')}</span>
+          </div>
+          <h3 class="font-display font-semibold text-lg text-navy-950">${escapeHtml(p.Title || '')}</h3>
+          <p class="mt-2 text-sm text-ink-500 leading-relaxed flex-1">${escapeHtml(p.Description || '')}</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            ${tags.map(t => `<span class="text-[11px] font-mono-num bg-slate-100 text-ink-500 px-2.5 py-1 rounded-md">${escapeHtml(t)}</span>`).join('')}
+          </div>
+          ${(p.Link && p.Link.trim() && p.Link.trim() !== '#')
+            ? (p.Link.includes('drive.google.com')
+                ? `<a href="${escapeAttr(p.Link)}" target="_blank" rel="noopener" download class="mt-6 inline-flex items-center justify-center gap-2 text-sm font-medium text-navy-900 border border-slate-200 rounded-lg py-2.5 hover:bg-navy-950 hover:text-white hover:border-navy-950 transition-colors">تحميل الأداة (Offline)</a>`
+                : `<a href="${escapeAttr(p.Link)}" target="_blank" rel="noopener" class="mt-6 inline-flex items-center justify-center gap-2 text-sm font-medium text-navy-900 border border-slate-200 rounded-lg py-2.5 hover:bg-navy-950 hover:text-white hover:border-navy-950 transition-colors">معاينة النظام</a>`)
+            : `<span class="mt-6 inline-flex items-center justify-center gap-2 text-sm font-medium text-slate-400 border border-dashed border-slate-200 rounded-lg py-2.5 cursor-default select-none">أداة تعمل محلياً (Offline)</span>`}
+        </div>
+      </article>`;
+    }).join('');
+    observeReveal(grid);
+  }
+
+  function renderInitiatives(initiatives) {
+    const grid = document.getElementById('initiatives-grid');
+    grid.innerHTML = initiatives.map((it, i) => `
+      <div class="initiative-item reveal bg-white/[0.04] border border-white/10 rounded-2xl p-7 hover:border-gold-500/40 transition-colors" style="transition-delay:${(i % 4) * 0.08}s">
+        <span class="inline-flex w-10 h-10 rounded-lg bg-gold-500/15 text-gold-400 items-center justify-center font-display font-bold text-sm mb-5">${escapeHtml(it.Number || '')}</span>
+        <h3 class="font-display font-semibold text-lg">${escapeHtml(it.Title || '')}</h3>
+        <p class="mt-2.5 text-sm text-slate-400 leading-relaxed">${escapeHtml(it.Description || '')}</p>
+      </div>
+    `).join('');
+    observeReveal(grid);
+  }
+
+  function renderTimeline(timeline) {
+    const list = document.getElementById('timeline-list');
+    list.innerHTML = timeline.map((t, i) => `
+      <div class="timeline-item reveal relative pr-8" style="transition-delay:${(i % 5) * 0.05}s">
+        <span class="timeline-node absolute right-0 top-1.5 w-4 h-4 rounded-full bg-teal-500"></span>
+        <span class="font-mono-num text-xs text-teal-600 font-semibold">${escapeHtml(t.Period || '')}</span>
+        <h3 class="font-display font-semibold text-navy-950 text-lg mt-1">${escapeHtml(t.Title || '')}</h3>
+        <p class="mt-1.5 text-sm text-ink-500 leading-relaxed">${escapeHtml(t.Description || '')}</p>
+      </div>
+    `).join('');
+    observeReveal(list);
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function escapeAttr(str) { return escapeHtml(str); }
+
+  function renderAll(data) {
+    renderAbout(data.bio || {});
+    renderKPIs((data.kpis && data.kpis.length) ? data.kpis : FALLBACK_DATA.kpis);
+    renderProjects((data.projects && data.projects.length) ? data.projects : FALLBACK_DATA.projects);
+    renderInitiatives((data.initiatives && data.initiatives.length) ? data.initiatives : FALLBACK_DATA.initiatives);
+    renderTimeline((data.timeline && data.timeline.length) ? data.timeline : FALLBACK_DATA.timeline);
+  }
+
+  // ---------------------------------------------------------------------
+  // تحميل البيانات عبر JSONP من Web App (بدون مشاكل CORS)
+  // ---------------------------------------------------------------------
+  function loadData() {
+    if (!GAS_WEB_APP_URL || GAS_WEB_APP_URL.indexOf('PASTE_YOUR') === 0) {
+      renderAll(FALLBACK_DATA);
+      return;
+    }
+    const callbackName = 'onPortfolioData_' + Date.now();
+    window[callbackName] = function (data) {
+      renderAll(data);
+      delete window[callbackName];
+      script.remove();
+    };
+    const script = document.createElement('script');
+    script.src = GAS_WEB_APP_URL + '?action=getData&callback=' + callbackName;
+    script.onerror = () => renderAll(FALLBACK_DATA);
+    document.body.appendChild(script);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    observeReveal();       // عناصر الهيرو الثابتة
+    loadData();
+  });
+</script>
+
+</body>
+</html>
